@@ -2,7 +2,7 @@ package com.willredington.babysitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.willredington.babysitter.model.GenericPayRange;
+import com.willredington.babysitter.model.AbstractPayRange;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,12 +17,12 @@ public class PayDto {
     private LocalDateTime end;
 
     @JsonProperty(value = "ranges")
-    private List<GenericPayRange> payRanges;
+    private List<AbstractPayRange> payRanges;
 
     public PayDto() {
     }
 
-    public PayDto(LocalDateTime start, LocalDateTime end, List<GenericPayRange> payRanges) {
+    public PayDto(LocalDateTime start, LocalDateTime end, List<AbstractPayRange> payRanges) {
         this.start = start;
         this.end = end;
         this.payRanges = payRanges;
@@ -44,11 +44,11 @@ public class PayDto {
         this.end = end;
     }
 
-    public List<GenericPayRange> getPayRanges() {
+    public List<AbstractPayRange> getPayRanges() {
         return payRanges;
     }
 
-    public void setPayRanges(List<GenericPayRange> payRanges) {
+    public void setPayRanges(List<AbstractPayRange> payRanges) {
         this.payRanges = payRanges;
     }
 }

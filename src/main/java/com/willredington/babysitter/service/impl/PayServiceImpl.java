@@ -1,6 +1,6 @@
 package com.willredington.babysitter.service.impl;
 
-import com.willredington.babysitter.model.GenericPayRange;
+import com.willredington.babysitter.model.AbstractPayRange;
 import com.willredington.babysitter.service.PayService;
 import com.willredington.babysitter.service.TimeService;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class PayServiceImpl implements PayService {
     }
 
     @Override
-    public int calculateForPayRanges(LocalDateTime start, LocalDateTime end, List<GenericPayRange> payRanges) {
+    public int calculateForPayRanges(LocalDateTime start, LocalDateTime end, List<AbstractPayRange> payRanges) {
 
         List<LocalDateTime> timeRange = timeService.generateTimeRange(start, end, Duration.ofHours(1));
 
         int sum = 0;
 
         for (LocalDateTime time : timeRange) {
-            for (GenericPayRange payRange : payRanges) {
+            for (AbstractPayRange payRange : payRanges) {
                 if (payRange.isActive(time)) {
                     sum += payRange.getRate();
                     break;
