@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,9 +23,8 @@ public class PayServiceImpl implements PayService {
     @Override
     public int calculateForPayRanges(LocalDateTime start, LocalDateTime end, List<AbstractPayRange> payRanges) {
 
-        List<LocalDateTime> timeRange = timeService.generateTimeRange(start, end, Duration.ofHours(1));
-
         int sum = 0;
+        List<LocalDateTime> timeRange = timeService.generateTimeRange(start, end, Duration.ofHours(1));
 
         for (LocalDateTime time : timeRange) {
             for (AbstractPayRange payRange : payRanges) {
