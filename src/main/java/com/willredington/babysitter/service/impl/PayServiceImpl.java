@@ -27,11 +27,16 @@ public class PayServiceImpl implements PayService {
         List<LocalDateTime> timeRange = timeService.generateTimeRange(start, end, Duration.ofHours(1));
 
         for (LocalDateTime time : timeRange) {
+            boolean touched = false;
             for (AbstractPayRange payRange : payRanges) {
                 if (payRange.isActive(time)) {
                     sum += payRange.getRate();
-                    break;
+                    touched = true;
                 }
+            }
+
+            if(!touched) {
+                int k = 2;
             }
         }
 
