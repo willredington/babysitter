@@ -10,6 +10,10 @@ import com.willredington.babysitter.model.impl.BetweenPayRange;
 
 import java.time.LocalDateTime;
 
+/**
+ * Parent class for all the pay ranges
+ * Generally wouldn't include business logic in a POJO, but it makes sense for a PayRange to know when it is active
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({
@@ -25,27 +29,61 @@ public abstract class AbstractPayRange {
     @JsonProperty
     private int rate;
 
+    /**
+     * Instantiates a new Abstract pay range.
+     */
     public AbstractPayRange() {
     }
 
+    /**
+     * Instantiates a new Abstract pay range.
+     *
+     * @param rate the rate
+     */
     public AbstractPayRange(int rate) {
         this.rate = rate;
     }
 
+    /**
+     * Is active boolean.
+     *
+     * @param time the time
+     * @return the boolean
+     */
     public abstract boolean isActive(LocalDateTime time);
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets rate.
+     *
+     * @return the rate
+     */
     public int getRate() {
         return rate;
     }
 
+    /**
+     * Sets rate.
+     *
+     * @param rate the rate
+     */
     public void setRate(int rate) {
         this.rate = rate;
     }

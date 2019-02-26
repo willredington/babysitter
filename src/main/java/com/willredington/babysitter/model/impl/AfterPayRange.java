@@ -5,6 +5,9 @@ import com.willredington.babysitter.model.AbstractPayRange;
 
 import java.time.LocalDateTime;
 
+/**
+ * A pay range for anytime after a specific date/time, can be inclusive
+ */
 public class AfterPayRange extends AbstractPayRange {
 
     @JsonProperty

@@ -7,6 +7,9 @@ import com.willredington.babysitter.model.AbstractPayRange;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * The DTO that holds the start and end dates of a sitter's actively working range, in addition to the pay ranges per family
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PayDto {
 

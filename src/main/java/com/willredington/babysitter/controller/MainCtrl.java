@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Main entry point for API requests
+ */
 @RestController
 public class MainCtrl {
 
@@ -19,9 +22,17 @@ public class MainCtrl {
         this.payService = payService;
     }
 
+    /**
+     * Calculates total sum for a babysitter's salary
+     *
+     * @param payDto the object containing pertinent info for the service to consume
+     * @return the total sum
+     * @throws InvalidPayRangeException the invalid pay range exception
+     */
     @PostMapping(value = "total")
     public Integer getTotal(@RequestBody PayDto payDto) throws InvalidPayRangeException {
 
+        // if its not valid, thrown an exception
         if (!payValidationService.isValid(payDto.getStart(), payDto.getEnd(), payDto.getPayRanges())) {
             throw new InvalidPayRangeException();
         }
