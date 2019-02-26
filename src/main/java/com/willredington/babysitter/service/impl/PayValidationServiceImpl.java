@@ -23,6 +23,10 @@ public class PayValidationServiceImpl implements PayValidationService {
 
     @Override
     public boolean isValid(LocalDateTime start, LocalDateTime end, List<AbstractPayRange> payRanges) {
+
+        if (end.isEqual(start) || end.isBefore(start))
+            return false;
+
         for (LocalDateTime time : timeService.generateTimeRange(start, end, OFFSET)) {
             for (int i = 1; i < payRanges.size(); i++) {
                 AbstractPayRange payRange = payRanges.get(i);
