@@ -2,15 +2,15 @@
 - https://github.com/PillarTechnology/kata-babysitter
 
 ## Prerequisites
-- Maven
+- Maven (optional)
 - Java 8 or later
 - JAVA_HOME environment variable set
 
 ## Run Tests
-`mvn clean test`
+`mvn clean test` or `mvnw clean test`
 
 ## Run Service
-`mvn clean spring-boot:run`
+`mvn clean spring-boot:run` or `mvnw clean spring-boot:run`
 
 Using curl or some http client send a request to `localhost:8080/total` with the following schema
 
