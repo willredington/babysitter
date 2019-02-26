@@ -21,6 +21,13 @@ public class PayValidationServiceImpl implements PayValidationService {
         this.timeService = timeService;
     }
 
+    /**
+     * If we have invalid start and end times or any of the ranges overlap its not valid
+     * @param start the start
+     * @param end   the end
+     * @param payRanges the different pay ranges
+     * @return true or false based on validity
+     */
     @Override
     public boolean isValid(LocalDateTime start, LocalDateTime end, List<AbstractPayRange> payRanges) {
 
